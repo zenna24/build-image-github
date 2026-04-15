@@ -30,9 +30,9 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
 
-         - name: Tag image
-           run: docker tag imageku ghcr.io/zenna24/imageku:latest
+        - name: Tag image
+          run: docker tag imageku ghcr.io/zenna24/imageku:latest
 
-         - name: Push Image
-           run: docker push ghcr.io/zenna24/imageku:latest
+        - name: Push Image
+          run: docker push ghcr.io/zenna24/imageku:latest
 
