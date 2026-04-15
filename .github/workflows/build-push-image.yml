@@ -1,0 +1,27 @@
+name: Build and Push Image
+run-name: Build and Push Image
+on: [push]
+jobs:
+    build-push-image:
+          runs-on: ubuntu-latest
+                steps:
+                        - name: Check out repository code
+                                  uses: actions/checkout@v4
+
+                                          - name: Build image
+                                                    run: docker build -t imageku .
+
+                                                            - name: List image
+                                                                      run: docker images
+
+                                                                              - name: Cek isi image
+                                                                                        run: docker history imageku:latest
+
+                                                                                                - name: Login to GitHub Registry
+                                                                                                          run: echo ${{ secrets.TOKEN_GITHUB }} | docker login ghcr.io -u zenna24 --password-stdin
+
+                                                                                                                  - name: Tag image
+                                                                                                                            run: docker tag imageku ghcr.io/zenna24/imageku:latest
+
+                                                                                                                                    - name: Push Image
+                                                                                                                                              run: docker push ghcr.io/zenna24/imageku:latest
