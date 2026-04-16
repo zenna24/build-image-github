@@ -22,12 +22,12 @@ jobs:
       - name: Cek isi image
         run: docker history imageku:latest
      
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-         registry: ghcr.io
-         username: ${{ github.actor }}
-         password: ${{ secrets.GITHUB_TOKEN }} 
+      - name: Login ke GitHub Container Registry
+          uses: docker/login-action@v3
+          with:
+           registry: ghcr.io
+           username: ${{ github.actor }}
+           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Tag image
         run: docker tag imageku ghcr.io/zenna24/imageku:latest
